@@ -1,6 +1,8 @@
 import threading
 import time
 import random
+from platform import machine
+from threading import main_thread
 
 from printDoc import printDoc
 from printList import printList
@@ -23,7 +25,14 @@ class Assignment1:
     def startSimulation(self):
         # Create Machine and Printer threads
         # Write code here
-            
+        for i in range(self.NUM_MACHINES):
+            machine = self.machineThread(i,self)
+            self.mThreads.append(machine)
+
+        for i in range(self.NUM_PRINTERS):
+            printer = self.machineThread(i,self)
+            self.mThreads.append(printer)
+
         # Start all the threads
         # Write code here
 
